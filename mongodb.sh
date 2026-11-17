@@ -18,7 +18,6 @@ else
     echo -e "$2 $R is failed $N, got errors"
      exit 1
 fi
-
 }
 
  if [ $ID -ne 0 ]
