@@ -38,7 +38,7 @@ fi
 dnf install nodejs -y &>> $TIMESTAMP
 VALIDATE "$?" "install nodejs 18"
 
-id roboshop
+id roboshop &>> $TIMESTAMP
 if [ $? -ne 0 ]
 then
     useradd roboshop &>> $TIMESTAMP
