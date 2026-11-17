@@ -29,11 +29,11 @@ fi
 fi
     
 
-dnf module disable nodejs -y  &>> $TIMESTAMP
-VALIDATE "$?" "disable default nodejs"
+# dnf module disable nodejs -y  &>> $TIMESTAMP
+# VALIDATE "$?" "disable default nodejs"
 
-dnf module enable nodejs:18 -y &>> $TIMESTAMP
-VALIDATE "$?" "enable nodejs 18"
+# dnf module enable nodejs:18 -y &>> $TIMESTAMP
+# VALIDATE "$?" "enable nodejs 18"
 
 dnf install nodejs -y &>> $TIMESTAMP
 VALIDATE "$?" "install nodejs 18"
