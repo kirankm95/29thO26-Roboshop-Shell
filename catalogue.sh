@@ -65,7 +65,7 @@ VALIDATE "$?" "Setup SystemD Catalogue Service"
 systemctl daemon-reload; systemctl enable catalogue; systemctl start catalogue &>> $TIMESTAMP
 VALIDATE "$?" "enable and start catalogue service"
 
-cp /home/ec2-user/29thO26-Roboshop-Shell/mongo-client.repo /etc/yum.repos.d/mongo.repo &>> $TIMESTAMP
+cp /home/ec2-user/29thO26-Roboshop-Shell/mongodb-client.repo /etc/yum.repos.d/mongo.repo &>> $TIMESTAMP
 VALIDATE "$?" "setup MongoDB repo"
 
 dnf install mongodb-org-shell -y &>> $TIMESTAMP
