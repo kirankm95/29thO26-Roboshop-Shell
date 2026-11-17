@@ -68,10 +68,10 @@ VALIDATE "$?" "enable and start catalogue service"
 cp /home/ec2-user/29thO26-Roboshop-Shell/mongodb-client.repo /etc/yum.repos.d/mongo.repo &>> $TIMESTAMP
 VALIDATE "$?" "setup MongoDB repo"
 
-dnf install mongodb-org-shell -y &>> $TIMESTAMP
+sudo dnf install mongodb-mongosh-shared-openssl3 -y &>> $TIMESTAMP
 VALIDATE "$?" "install mongodb-client"
 
-mongo --host mongodb.kiranku.online </app/schema/catalogue.js &>> $TIMESTAMP
+mongosh --host mongodb.kiranku.online </app/schema/catalogue.js &>> $TIMESTAMP
 VALIDATE "$?" "Load Schema"
 
 systemctl restart catalogue &>> $TIMESTAMP
