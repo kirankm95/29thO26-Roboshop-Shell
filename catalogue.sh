@@ -45,6 +45,7 @@ then
     VALIDATE "$?" "create roboshop user"
 else
     echo -e "$Y roboshop user already exist, so skipping$N"
+fi
 
 mkdir -p /app &>> $TIMESTAMP
 VALIDATE "$?" "create app directory"
