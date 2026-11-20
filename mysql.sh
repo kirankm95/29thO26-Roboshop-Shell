@@ -29,8 +29,8 @@ fi
 fi
     
 
-dnf module disable mysql -y  &>> $TIMESTAMP
-VALIDATE "$?" "disable default mysql"
+# dnf module disable mysql -y  &>> $TIMESTAMP
+# VALIDATE "$?" "disable default mysql"
 
 cp /home/ec2-user/29thO26-Roboshop-Shell/mysql.repo /etc/yum.repos.d/mysql.repo  &>> $TIMESTAMP
 VALIDATE "$?" "Setup the MySQL5.7 repo file"
