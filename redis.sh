@@ -29,22 +29,22 @@ fi
 fi
     
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y --skip-broken &>> $TIMESTAMP
-VALIDATE "$?" "setup redis repo file"
+# dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y --skip-broken &>> $TIMESTAMP
+# VALIDATE "$?" "setup redis repo file"
 
-dnf module enable redis:remi-6.2 -y &>> $TIMESTAMP
-VALIDATE "$?" "Enable Redis 6.2"
+# dnf module enable redis:remi-6.2 -y &>> $TIMESTAMP
+# VALIDATE "$?" "Enable Redis 6.2"
 
-dnf install redis -y &>> $TIMESTAMP
-VALIDATE "$?" "install redis"
+# dnf install valkey -y &>> $TIMESTAMP
+# VALIDATE "$?" "install redis"
 
-dnf install redis -y &>> $TIMESTAMP
-VALIDATE "$?" "install redis"
+dnf install valkey -y &>> $TIMESTAMP
+VALIDATE "$?" "install valkey"
 
-sed -i 's/127.0.0.1/0.0.0./g' /etc/redis.conf &>> $TIMESTAMP
+sed -i 's/127.0.0.1/0.0.0./g' /etc/valkey/valkey.conf &>> $TIMESTAMP
 VALIDATE "$?" "enable remote connections"
 
-systemctl enable redis; systemctl start redis
-VALIDATE "$?" "enable and start redis"
+systemctl enable valkey; systemctl start valkey
+VALIDATE "$?" "enable and start valkey"
 
 

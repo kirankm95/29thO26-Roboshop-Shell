@@ -32,5 +32,19 @@ fi
 dnf module disable mysql -y  &>> $TIMESTAMP
 VALIDATE "$?" "disable default mysql"
 
-dnf module disable mysql -y  &>> $TIMESTAMP
-VALIDATE "$?" "disable default mysql"
+cp /home/ec2-user/29thO26-Roboshop-Shell/mysql.repo /etc/yum.repos.d/mysql.repo  &>> $TIMESTAMP
+VALIDATE "$?" "Setup the MySQL5.7 repo file"
+
+dnf install mysql-community-server -y &>> $TIMESTAMP
+VALIDATE "$?" "Install MySQL Server"
+
+systemctl enable mysqld; systemctl start mysqld &>> $TIMESTAMP
+VALIDATE "$?" "enable and Start MySQL Service"
+
+mysql_secure_installation --set-root-pass RoboShop@1 &>> $TIMESTAMP
+VALIDATE "$?" "change the default root password"
+
+mysql -uroot -pRoboShop@1 &>> $TIMESTAMP
+VALIDATE "$?" "check the new password working or not"
+
+
