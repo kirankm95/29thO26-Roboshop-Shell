@@ -29,7 +29,7 @@ fi
 fi
     
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y  &>> $TIMESTAMP
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y --skip-broken &>> $TIMESTAMP
 VALIDATE "$?" "setup redis repo file"
 
 dnf module enable redis:remi-6.2 -y &>> $TIMESTAMP
