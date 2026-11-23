@@ -28,5 +28,23 @@ fi
     echo -e "$G you are root user, going further with installation $N"
 fi
 
-dnf install nodejs -y &>> $TIMESTAMP
-VALIDATE "$?" "install nodejs 18"
+dnf install nginx -y &>> $TIMESTAMP
+VALIDATE "$?" "Install Nginx"
+
+systemctl enable nginx; systemctl start nginx &>> $TIMESTAMP
+VALIDATE "$?" "Start & Enable Nginx service"
+
+rm -rf /usr/share/nginx/html/* &>> $TIMESTAMP
+VALIDATE "$?" "Remove the default content"
+
+curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $TIMESTAMP
+VALIDATE "$?" "Download the frontend content"
+
+cd /usr/share/nginx/html; unzip /tmp/web.zip &>> $TIMESTAMP
+VALIDATE "$?" "Extract the frontend content"
+
+cp /home/ec2-user/29thO26-Roboshop-Shell/roboshop.conf /etc/nginx/default.d/roboshop.conf  &>> $TIMESTAMP
+VALIDATE "$?" "copy Nginx Reverse Proxy Configuration"
+
+systemctl restart nginx  &>> $TIMESTAMP
+VALIDATE "$?" "Restart Nginx Service"
